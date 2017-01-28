@@ -1,5 +1,7 @@
 // Ldap build file
 
+version = version.replace('.RELEASE', '.ADFIX')
+
 dependencies {
     compile project(':spring-security-core'),
             springCoreDependency,
