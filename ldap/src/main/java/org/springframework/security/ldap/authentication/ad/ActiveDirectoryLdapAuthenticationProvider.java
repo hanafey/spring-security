@@ -102,6 +102,19 @@ public final class ActiveDirectoryLdapAuthenticationProvider extends AbstractLda
     // Only used to allow tests to substitute a mock LdapContext
     ContextFactory contextFactory = new ContextFactory();
 
+	/**
+	 * @param domain the domain name (may be null or empty)
+	 * @param url an LDAP url (or multiple URLs)
+	 * @param rootDn the root DN (may be null or empty)
+	 */
+	public ActiveDirectoryLdapAuthenticationProvider(String domain, String url,
+			String rootDn) {
+		Assert.isTrue(StringUtils.hasText(url), "Url cannot be empty");
+		this.domain = StringUtils.hasText(domain) ? domain.toLowerCase() : null;
+		this.url = url;
+		this.rootDn = StringUtils.hasText(rootDn) ? rootDn.toLowerCase() : null;
+	}
+
     /**
      * @param domain the domain name (may be null or empty)
      * @param url an LDAP url (or multiple URLs)
